@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+
+html {scroll-behavior:smooth;}
+
+body{
+    background-color: #f8feff;
+    color: black;
+    font-family: 'EB Garamond', serif;
+}
+
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 850px) {
+    #grid {
+        display: flex;
+        flex-wrap: wrap
+    }
+}
+
+
+#profile {
+    display: grid;
+    grid-area: profile;
+    height: 300px;
+    width: 200px;
+    border: 5px solid black;
+    justify-content: flex-end;
+    margin: auto;
+}
+
+#heading {
+    display: grid;
+    grid-area: heading;
+    justify-content: center;
+    align-content: stretch;
+}
+
+@media screen and (min-width: 850px) {
+    #heading {
+        display: grid;
+        grid-area: heading;
+        justify-content: left;
+        align-content:flex-start;
+    }
+    .subheading{
+        line-height: 50px;
+        background-color: rgb(172, 138, 172);
+        color: #f8feff;
+        font-size: 50px;
+        margin-left: 250px;
+        margin-right: 300px;
+    }
+}
+
+
+.heading {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 70px;
+    margin-top: 50px;
+    margin-right: 20px;
+    color:antiquewhite;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+}
+
+.subheading{
+    line-height: 50px;
+    background-color: rgb(172, 138, 172);
+    color: #f8feff;
+    font-size: 50px;
+    margin:auto;
+}
+
+#meowtch {
+    grid-area: project1;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 25px;
+}
+#meowtch img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 75px;
+    margin-bottom: 20px;
+}
+#meowtch h3{
+    font-family: 'Gabarito', sans-serif;
+}
+
+#shmup {
+    grid-area: project2;
+    text-align: justify;
+    font-size: 25px;
+}
+#shmup img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 75px;
+    margin-bottom: 20px;
+}
+#shmup h3 {
+    font-family: 'Gabarito', sans-serif;
+}
+
+#barber{
+    grid-area: project3;
+    text-align: justify;
+    font-size: 25px;
+}
+#barber img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 75px;
+    margin-bottom: 20px;
+}
+#barber h3{
+    font-family: 'Gabarito', sans-serif;
+}
+
+footer {
+    background-color: burlywood;
+    grid-area: contact;
+    text-align: center;
+    font-size: 16px;
+}
+
+@media screen and (min-width: 850px) {
+    footer {
+        background-color: burlywood;
+        grid-area: contact;
+        text-align: center;
+        font-size: 25px;
+        margin: 30px;
+    }
+}
+
+a:visited{
+    color: purple;
+}
+
+a:hover{
+    color: teal;
+}
+
+a:active{
+    color: rgb(172, 138, 172);
+}

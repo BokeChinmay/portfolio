@@ -1,0 +1,89 @@
+body{
+    background-color: #f8feff;
+    color: black;
+}
+
+#grid {
+    display: grid;
+    grid-template-rows: 300px 100px 1fr 1fr 1fr 200px;
+    grid-template-areas:    "profile"
+                            "heading"
+                            "project1"
+                            "project2"
+                            "project3"
+                            "contact";
+}
+
+@media screen and (min-width: 850px) {
+    #grid {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 300px 1fr 1fr;
+        grid-template-areas:    "profile        heading"
+                                "project1       project2"
+                                "contact        project3";
+    }
+}
+
+#profile {
+    display: grid;
+    grid-area: profile;
+    height: 300px;
+    width: 200px;
+    border: 5px solid black;
+}
+
+#heading {
+    display: grid;
+    grid-area: heading;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    justify-content: left;
+    align-content: center;
+    font-size: 75px;
+    color:antiquewhite;
+}
+
+#meowtch {
+    grid-area: project1;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 25px;
+}
+#meowtch img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 75px;
+    margin-bottom: 20px;
+}
+
+#schmup {
+    grid-area: project2;
+    text-align: justify;
+    font-size: 25px;
+}
+
+#schmup img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 75px;
+    margin-bottom: 20px;
+}
+
+#barber{
+    grid-area: project3;
+    text-align: justify;
+    font-size: 25px;
+}
+
+#barber img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 75px;
+    margin-bottom: 20px;
+}
+
+footer {
+    grid-area: contact;
+    text-align: center;
+    font-size: 25px;
+}

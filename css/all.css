@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+
+html {scroll-behavior:smooth;}
+
+body{
+    background-color: #f8feff;
+    color: black;
+    font-family: 'EB Garamond', serif;
+    padding-bottom: 50px;
+}
+
+.navbar-brand {
+    margin-left: 20px;
+    font-weight: bolder;
+    color:black;
+    text-shadow: 0 0 1px antiquewhite, 0 0 2px #000000;
+}
+
+.nav-link:hover{
+    background-color: antiquewhite;
+}
+
+.dropdown-item {
+    font-weight: bold;
+}
+
+.dropdown-item:hover{
+    background-color: antiquewhite;
+}
+
+header {
+    text-align: center;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    overflow: hidden;
+}
+
+@media screen and (min-width: 850px) {
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        overflow: hidden;
+    }
+}
+
+.project {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: antiquewhite;
+    border: solid;
+    position: relative;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 25px;
+}
+
+/*
+.project img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 75px;
+    margin-bottom: 20px;
+}
+*/
+
+.project h3{
+    font-family: 'Gabarito', sans-serif;
+}
+
+h3 img {
+  height: 200px;
+  width: 250px;
+}
+
+div.scroll-container {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+
+  .myImg {
+    height: 300px;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .myImg:hover {
+    opacity: 0.7;
+  }
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 25px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    background-color: #000000;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }

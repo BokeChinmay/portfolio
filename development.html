@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/all.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+
+    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>Game Development Projects</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Portfolio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Projects
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="development.html">Game Development</a>
+                <a class="dropdown-item" href="production.html">Game Design/Production</a>
+                <a class="dropdown-item" href="narrative.html">Narrative/Creative Writing</a>
+                <a class="dropdown-item" href="UI.html">UI/UX</a>
+                <a class="dropdown-item" href="web.html">Web Development</a>
+              </div>
+            </li>
+        </div>
+      </nav>
+
+      <header>
+        <h1 class="heading">Game Development Projects</h1>
+        <h4>Projects where I worked backend and on the coding of the mechanics.</h4>
+      </header>
+
+      <grid class="projects">
+
+        <div class="project">
+            <h3> <img src="media/POTBLogo.png" alt = "Logo">2D Unity Game Project: Path of The Blade</a></h3>
+            <ul>
+                <li>A 2D Unity Game Project all about catching Samurai Blades with your bare hands.</li>
+                <li>The game has a highscore system where you get points by catching flying blades coming at you at various speeds.</li>
+                <li>The windows to catch the swords can vary, making it harder as you build your score.</li>
+                <li>Also adds sounds and distractions across the screen to amp the difficulty.</li>
+                <li>Worked on coding the core mechanics, aesthetics and gameplay loop.</li>
+            </ul>
+            <h3>Links:</h3> 
+            <ul>
+                <li>Game: <a href = "https://jorgedabossman.itch.io/path-of-the-blade">Path of the Blade</a></li>
+                <li>Documentation: <a href = "https://docs.google.com/document/d/13fii9srv33m11xmcgykywE837agDFhBYYNNWVz2VQYo/edit?tab=t.0">Doc</a></li>
+                <li>Github: <a href = "https://github.com/Ignaciodeorbe/WGSS-Samuria">Repo</a></li>
+            </ul>
+            <h3>Images:</h3>
+            <div class="scroll-container">
+                <img class= "myImg" src="media/POTBTitle.png" alt="Title Screen">
+                <img class= "myImg" src="media/POTBTutorial.png" alt="Tutorial">
+                <img class= "myImg" src="media/POTBStart.png" alt="Start">
+                <img class= "myImg" src="media/POTBGame.png" alt="Gameplay">
+                <img class= "myImg" src="media/POTBGameOver.png" alt="Game Over">
+                <img class= "myImg" src="media/POTBCredit.png" alt="Credits">
+            </div>
+
+
+            <div id="myModal" class="modal">
+
+                <!-- The Close Button -->
+                <span class="close">&times;</span>
+              
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="img01">
+              
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"></div>
+              </div>
+
+        </div>
+
+
+        <div class="project">
+            <h3> <img src="media/meowch.png" alt = "meowtch"> <a href = "https://github.com/BokeChinmay/gdaps2_2205_team_3">2D MonoGame Game Project: Meowtch</a></h3>
+            <ul>
+                <li>2D MonoGame built game that is a top-down dungeon crawler.</li>
+                <li>Character is a cat, named Meo (inspiration from Neo from The Matrix)</li>
+                <li>Level-based design, kill all the enemies in a level, move on to next level.</li>
+                <li>A mini-boss battle on the final level.</li>
+            </ul>
+            <h3>Links:</h3>
+            <h3>Images:</h3>
+            
+        </div>
+        
+        <div class="project">
+            <h3> <img src="media/asteroidboogaloo.png" alt = "shmup"> <a href = "https://github.com/IGME-202-2231/project-1-BokeChinmay">2D Unity Shmup Game: Asteroid Boogaloo</a></h3>
+            <ul>
+                <li>2D Unity Shoot-em-up game.</li>
+                <li>Side-scrolling spaceship shooter, with the camera fixed.</li>
+                <li>Destroy asteroids to build your highscore, endlessly till you lose all your healthpoints.</li>
+                <li>Simplistic, with 2 types of enemies. Dodge the asteroids to survive.</li>
+            </ul>
+            <h3>Links:</h3>
+            <h3>Images:</h3>
+            
+        </div>
+
+        <div class="project">
+            <h3> <img src="" alt = ""> <a href = "">2D Unity Boids Simulation: Asteroid Dodge</a></h3>
+            <ul>
+                <li>TEXTTTTTTTTTTT</li>
+            </ul>
+            <h3>Links:</h3>
+            <h3>Images:</h3>
+            
+        </div>
+        
+        <div class="project">
+            <h3> <img src="media/barbershop.png" alt = "barber"> <a href = "https://github.com/jlw6563/wgss">2D Unity Game Project: Barber Shop 1992 </a></h3>
+            <ul>
+                <li>2D Unity Project with storyline as the main focus </li>
+                <li>Haircut Simulator with a dark twist, multiple endings and surprises.</li>
+                <li>Quick Time Events based game with an added maneuverability option, to interact with your barber shop.</li>
+                <li>Added elements of top-down movement across days, with different interactions based on your ending path.</li>
+            </ul>
+            <h3>Links:</h3>
+            <h3>Images:</h3>
+            
+        </div>
+      </grid>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the images and bind an onclick event on each to insert it inside the modal
+        // use its "alt" text as a caption
+        var images = document.querySelectorAll(".myImg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        for(let i = 0; i < images.length; i++){
+            images[i].onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+         }
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        } 
+    </script>
+</body>

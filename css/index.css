@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+
+html {scroll-behavior:smooth;}
+
+#header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#header h2 {
+    font-family: 'Gabarito', sans-serif;
+}
+
+body{
+    background-color: #f8feff;
+    color: black;
+    font-family: 'EB Garamond', serif;
+}
+
+.navbar-brand {
+    margin-left: 20px;
+    font-weight: bolder;
+    color:black;
+    text-shadow: 0 0 1px antiquewhite, 0 0 2px #000000;
+}
+
+.nav-link:hover{
+    background-color: antiquewhite;
+}
+
+.dropdown-item {
+    font-weight: bold;
+}
+
+.dropdown-item:hover{
+    background-color: antiquewhite;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-areas: "profile"
+                         "heading";
+}
+
+@media screen and (min-width: 850px) {
+    #grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 300px;
+        grid-template-areas: "profile      heading"  
+    }
+}
+
+#profile {
+    display: grid;
+    grid-area: profile;
+    height: 300px;
+    width: 200px;
+    border: 5px solid black;
+    justify-content: flex-start;
+    margin: auto;
+}
+
+#heading {
+    display: grid;
+    grid-area: heading;
+    justify-content: center;
+    align-content: stretch;
+    margin: auto;
+}
+
+@media screen and (min-width: 850px) {
+    #heading {
+        display: grid;
+        grid-area: heading;
+        justify-content: center;
+        align-content:flex-end;
+        margin: auto;
+    }
+    .subheading{
+        line-height: 50px;
+        background-color: rgb(172, 138, 172);
+        color: #f8feff;
+        font-size: 50px;
+        margin-left: 250px;
+        margin-right: 300px;
+    }
+}
+
+.heading {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 70px;
+    margin-top: 50px;
+    margin-right: 20px;
+    color:antiquewhite;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+}
+
+.subheading{
+    line-height: 50px;
+    background-color: rgb(172, 138, 172);
+    color: #f8feff;
+    font-size: 50px;
+    margin:auto;
+}
+
+#more {
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px 20px;
+}
+
+@media screen and (min-width: 800px) {
+    #more {
+        display: flex;
+        flex: 0 1 auto;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 20px 20px;
+    }
+  }
+  
+  #intro, #media, #psych, #writing, #other {
+    background-color: burlywood;
+    text-align: justify;
+    font-size: 16px;
+  }
+
+@media screen and (min-width: 800px) {
+    #intro, #media, #psych, #writing, #other {
+        background-color: burlywood;
+        text-align: justify;
+        font-size: 25px;
+        flex: 25%;
+        padding: 20px;
+}
+}
+
+#intro h3, #media h3, #psych h3, #writing h3, #other h3 {
+    font-weight: bold;
+    font-family: 'Gabarito', sans-serif;
+}
+
+.footer{
+    justify-content: center;
+    width: 500px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: burlywood;
+    text-align: center;
+    font-size: 16px;
+}
+
+.inner{
+    display: inline-block;
+}
+
