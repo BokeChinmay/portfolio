@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Software Development - Chinmay Gaikwad</title>
+  <meta name="description" content="Software development work: systems, tooling, backend integrations, and practical shipped features." />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
+  <link rel="manifest" href="media/site.webmanifest">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/site.css" />
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Portfolio</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Projects
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="development.html">Game Development</a>
+              <a class="dropdown-item" href="production.html">Game Design / Production</a>
+              <a class="dropdown-item" href="narrative.html">Narrative Writing</a>
+              <a class="dropdown-item" href="software.html">Software <span class="sr-only">(current)</span></a>
+              <a class="dropdown-item" href="web.html">Web Development</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-header">
+      <div class="container">
+        <h1>Software Development</h1>
+        <p class="lede">Systems, integrations, and tools: the "make it work reliably" side of building.</p>
+
+        <div class="pills" aria-label="Related pages">
+          <a class="pill" href="development.html"><i class="fa-solid fa-gamepad"></i> Game Dev</a>
+          <a class="pill" href="production.html"><i class="fa-solid fa-sitemap"></i> Design/Production</a>
+          <a class="pill" href="web.html"><i class="fa-solid fa-globe"></i> Web</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="container" style="padding-top: 22px;">
+      <h2 class="section-title">What you'll find here</h2>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Focus areas</h3>
+          <ul>
+            <li>Backend & data: storage, state, and clean interfaces</li>
+            <li>Systems thinking: edge cases, maintainability, debugging</li>
+            <li>Shipped features: demos that actually run (not just screenshots)</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Tech I use</h3>
+          <ul>
+            <li>JavaScript / TypeScript, Python, C#</li>
+            <li>Firebase, REST-style APIs, deployment basics</li>
+            <li>Git/GitHub, documentation, iterative improvement</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Overlap note</h3>
+          <p>
+            Some projects show up across <a href="web.html">Web</a> or <a href="development.html">Game Dev</a>.
+            Here I focus on the engineering angle: integration, architecture, and why the system works.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" style="padding-top: 10px;">
+      <h2 class="section-title">Featured work</h2>
+
+      <div class="project-list">
+
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Mythology Educational App thumbnail" />
+            </div>
+            <div class="project-meta">
+              <h3>Mythology Educational App</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">LLM</span>
+                <span class="badge">UI Themes</span>
+                <span class="badge">Quiz Systems</span>
+                <span class="badge">Narrated Content</span>
+              </div>
+              <ul>
+                <li>Duolingo-style learning flow for world mythologies (learn → interact → quiz → score).</li>
+                <li>Designed prompts + generation structure so content stays consistent and educational.</li>
+                <li>Built UI/theme systems to keep the experience clean and “study-friendly.”</li>
+              </ul>
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="mailto:chinmaygaikwad2004@gmail.com?subject=Portfolio%20Request%20-%20Mythology%20Educational%20App%20Demo"><i class="fa-solid fa-video"></i> Request Demo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Interactive Storyworld thumbnail" />
+            </div>
+            <div class="project-meta">
+              <h3>Interactive Storyworld</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">LLM Integration</span>
+                <span class="badge">Prompting</span>
+                <span class="badge">Interactive Choices</span>
+              </div>
+              <ul>
+                <li>Interactive story application where user choices drive dynamically generated story branches.</li>
+                <li>Owned LLM integration and prompt structure to keep outputs coherent across turns.</li>
+                <li>Focused on reliability: predictable formats, clear state, and readable output.</li>
+              </ul>
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="mailto:chinmaygaikwad2004@gmail.com?subject=Portfolio%20Request%20-%20Interactive%20Storyworld%20Demo"><i class="fa-solid fa-video"></i> Request Demo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="container" style="padding-top: 8px; padding-bottom: 18px;">
+      <h2 class="section-title">Quick hits</h2>
+      <p class="lede" style="margin-bottom: 14px;">Smaller builds and experiments.</p>
+
+      <div class="project-list">
+
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Firebase Score Storage thumbnail" />
+            </div>
+            <div class="project-meta">
+              <h3>Firebase - Score Storage</h3>
+              <div class="badges">
+                <span class="badge">Firebase</span>
+                <span class="badge">Data</span>
+                <span class="badge">Admin UI</span>
+              </div>
+              <p>High-score storage with a separate admin page for managing/inspecting the stored data.</p>
+              <div class="actions">
+                <a class="btn-link primary" href="https://people.rit.edu/crg2205/330/pe12/firebase-high-score.html"><i class="fa-solid fa-link"></i> Player Page</a>
+                <a class="btn-link" href="https://people.rit.edu/crg2205/330/pe12/firebase-admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Page</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Biome Creatures thumbnail" />
+            </div>
+            <div class="project-meta">
+              <h3>Biome Creatures</h3>
+              <div class="badges">
+                <span class="badge">TypeScript</span>
+                <span class="badge">Favorites</span>
+                <span class="badge">Bundling</span>
+              </div>
+              <p>Creature browser with favorites support and backend/data handling. Built with a TypeScript workflow.</p>
+              <div class="actions">
+                <a class="btn-link primary" href="https://people.rit.edu/crg2205/330/practical3typescriptbundling/index.html"><i class="fa-solid fa-link"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div style="margin-top: 14px;">
+        <a class="btn-link" href="index.html"><i class="fa-solid fa-house"></i> Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-card">
+        <h3>Contact</h3>
+        <div class="links" aria-label="Contact links">
+          <a href="mailto:chinmaygaikwad2004@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="https://www.linkedin.com/in/chinmay-gaikwad-26748424a/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/BokeChinmay"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

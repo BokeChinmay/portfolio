@@ -4,13 +4,10 @@
 html {scroll-behavior:smooth;}
 
 #header {
-    background-color: antiquewhite;
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     font-size: 30px;
-    padding: 20px;
-    border-radius: 10px;
 }
 
 #header h2 {
@@ -18,7 +15,7 @@ html {scroll-behavior:smooth;}
 }
 
 body{
-    background-color: #f9ede8;
+    background-color: #f8feff;
     color: black;
     font-family: 'EB Garamond', serif;
 }
@@ -43,7 +40,6 @@ body{
 }
 
 #grid {
-    border-top: 2px solid black;
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-areas: "profile"
@@ -52,7 +48,6 @@ body{
 
 @media screen and (min-width: 850px) {
     #grid {
-        border-top: 3px solid black;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 300px;
@@ -65,10 +60,9 @@ body{
     grid-area: profile;
     height: 300px;
     width: 200px;
-    border: 3px solid black;
+    border: 5px solid black;
     justify-content: flex-start;
     margin: auto;
-    margin-top: 20px;
 }
 
 #heading {
@@ -121,22 +115,29 @@ body{
     justify-content: flex-start;
     gap: 20px 20px;
 }
+
+@media screen and (min-width: 800px) {
+    #more {
+        display: flex;
+        flex: 0 1 auto;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 20px 20px;
+    }
+  }
   
   #intro, #media, #psych, #writing, #other {
-    border-radius: 5px;
-    background-color: antiquewhite;
+    background-color: burlywood;
     text-align: justify;
     font-size: 16px;
   }
 
 @media screen and (min-width: 800px) {
     #intro, #media, #psych, #writing, #other {
-        border-radius: 10px;
-        margin: auto;
-        width: 1490px;
-        background-color: antiquewhite;
+        background-color: burlywood;
         text-align: justify;
         font-size: 25px;
+        flex: 25%;
         padding: 20px;
 }
 }
@@ -147,27 +148,17 @@ body{
 }
 
 .footer{
-    border-radius: 10px;
-    border: 3px solid black;
     justify-content: center;
     width: 500px;
     margin-top: 20px;
-    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-    background-color: antiquewhite;
+    background-color: burlywood;
     text-align: center;
     font-size: 16px;
-    padding: 12px
 }
 
 .inner{
     display: inline-block;
-}
-
-section
-{
-    border: 3px solid black;
-    margin: 15px;
 }
 

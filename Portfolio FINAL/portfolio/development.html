@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Game Development Projects - Chinmay Gaikwad</title>
+  <meta name="description" content="Game development projects by Chinmay Gaikwad: Unity and MonoGame projects, mechanics, gameplay systems, and prototypes." />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
+  <link rel="manifest" href="media/site.webmanifest">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/site.css" />
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Portfolio</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Projects
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="development.html">Game Development <span class="sr-only">(current)</span></a>
+              <a class="dropdown-item" href="production.html">Game Design / Production</a>
+              <a class="dropdown-item" href="narrative.html">Narrative Writing</a>
+              <a class="dropdown-item" href="software.html">Software</a>
+              <a class="dropdown-item" href="web.html">Web Development</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-header">
+      <div class="container">
+        <h1>Game Development Projects</h1>
+        <p class="lede">
+          Projects where I focused on mechanics, gameplay systems, and their implementations. <br>
+          (Unity / MonoGame / prototypes).
+        </p>
+      </div>
+    </header>
+
+    <section class="container" style="padding-top: 22px;">
+      <h2 class="section-title">What you'll find here</h2>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Focus areas</h3>
+          <ul>
+            <li>Mechanics prototypes and gameplay systems</li>
+            <li>Engine work in Unity, Unreal, and MonoGame</li>
+            <li>Playable builds and clear write-ups</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Tools I use</h3>
+          <ul>
+            <li>Unity (C#), Unreal Engine, MonoGame</li>
+            <li>Gameplay loops, input, tuning, and debugging</li>
+            <li>Iteration based on feel, pacing, and constraints</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Overlap note</h3>
+          <p>Some projects also show up on <a href="production.html">Design/Production</a>. This page focuses on implementation and gameplay systems.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="project-list">
+
+        <!-- Project 1 -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/POTBLogo.png" alt="Path of the Blade logo" />
+            </div>
+
+            <div class="project-meta">
+              <h3>Path of the Blade (Unity)</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">Unity</span>
+                <span class="badge">2D</span>
+                <span class="badge">C#</span>
+                <span class="badge">Arcade / High Score</span>
+              </div>
+
+              <ul>
+                <li>2D Unity game about catching flying samurai blades with precise timing.</li>
+                <li>High-score system: difficulty ramps up through speed, timing windows, and distractions.</li>
+                <li>Worked on core mechanics, gameplay loop, and feel/aesthetics.</li>
+              </ul>
+
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="https://jorgedabossman.itch.io/path-of-the-blade"><i class="fa-solid fa-gamepad"></i> Play</a>
+                <a class="btn-link" href="https://docs.google.com/document/d/13fii9srv33m11xmcgykywE837agDFhBYYNNWVz2VQYo/edit?tab=t.0"><i class="fa-solid fa-file-lines"></i> Documentation</a>
+                <a class="btn-link" href="https://github.com/Ignaciodeorbe/WGSS-Samuria"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery">
+            <div class="gallery-title">Screenshots</div>
+            <div class="scroll-container" aria-label="Path of the Blade gallery">
+              <img class="myImg" src="media/POTBTitle.png" alt="Title Screen">
+              <img class="myImg" src="media/POTBTutorial.png" alt="Tutorial">
+              <img class="myImg" src="media/POTBStart.png" alt="Start Screen">
+              <img class="myImg" src="media/POTBGame.png" alt="Gameplay">
+              <img class="myImg" src="media/POTBGameOver.png" alt="Game Over Screen">
+              <img class="myImg" src="media/POTBCredit.png" alt="Credits Screen">
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/meowch.png" alt="Meowtch cover art" />
+            </div>
+
+            <div class="project-meta">
+              <h3>Meowtch (MonoGame)</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">MonoGame</span>
+                <span class="badge">2D</span>
+                <span class="badge">Dungeon Crawler</span>
+              </div>
+
+              <ul>
+                <li>Top-down dungeon crawler built in MonoGame.</li>
+                <li>Level-based flow: clear enemies → advance to the next level.</li>
+                <li>Final stage includes a mini-boss battle.</li>
+              </ul>
+
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="https://github.com/BokeChinmay/gdaps2_2205_team_3"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/asteroidboogaloo.png" alt="Asteroid Boogaloo cover art" />
+            </div>
+
+            <div class="project-meta">
+              <h3>Asteroid Boogaloo (Unity)</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">Unity</span>
+                <span class="badge">2D</span>
+                <span class="badge">Shoot ’em up</span>
+              </div>
+
+              <ul>
+                <li>Side-scrolling spaceship shooter with a fixed camera.</li>
+                <li>Destroy asteroids to build score and survive as long as possible.</li>
+                <li>Simple enemy set + strong focus on dodging and positioning.</li>
+              </ul>
+
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="https://igme-202-2231.github.io/project-1-BokeChinmay/builds/"><i class="fa-solid fa-gamepad"></i> Play Build</a>
+                <a class="btn-link" href="https://github.com/IGME-202-2231/project-1-BokeChinmay"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/barbershop.png" alt="Barber Shop 1992 cover art" />
+            </div>
+
+            <div class="project-meta">
+              <h3>Barber Shop 1992 (Unity)</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">Unity</span>
+                <span class="badge">2D</span>
+                <span class="badge">Narrative</span>
+                <span class="badge">Multiple Endings</span>
+              </div>
+
+              <ul>
+                <li>Story-driven haircut simulator with a dark twist and branching outcomes.</li>
+                <li>Quick Time Events + optional top-down movement across days.</li>
+                <li>Interactions shift based on the path you’re on.</li>
+              </ul>
+
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="https://github.com/jlw6563/wgss"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Unreal FPS Level thumbnail" />
+            </div>
+
+            <div class="project-meta">
+              <h3>Unreal FPS Level (Unreal Engine)</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">Unreal Engine</span>
+                <span class="badge">FPS</span>
+                <span class="badge">AI</span>
+                <span class="badge">Objective Flow</span>
+              </div>
+
+              <ul>
+                <li>Built an FPS level with combat encounters, objectives, and clear player flow.</li>
+                <li>Implemented layout, AI, weapon setup, and objective logic (models/props excluded).</li>
+                <li>Focused on pacing: readable spaces, escalating beats, and satisfying traversal.</li>
+              </ul>
+
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="mailto:chinmaygaikwad2004@gmail.com?subject=Portfolio%20Request%20-%20Unreal%20FPS%20Level%20Demo"><i class="fa-solid fa-video"></i> Request Video Demo</a>
+                <a class="btn-link" href="production.html"><i class="fa-solid fa-sitemap"></i> Design Notes (Production)</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Boids simulation thumbnail" />
+            </div>
+
+            <div class="project-meta">
+              <h3>Boids Simulation (Unity)</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">Unity</span>
+                <span class="badge">Simulation</span>
+                <span class="badge">Steering Behaviors</span>
+              </div>
+
+              <ul>
+                <li>Flocking simulation built in Unity using classic boids rules.</li>
+                <li>Tuned cohesion/alignment/separation so movement reads clearly and feels natural.</li>
+                <li>Focused on interaction logic and parameter balancing for stable emergent behavior.</li>
+              </ul>
+
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="https://igme-202-2231.github.io/project-2-BokeChinmay/builds/"><i class="fa-solid fa-gamepad"></i> Play Build</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 7 -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Shattered thumbnail" />
+            </div>
+
+            <div class="project-meta">
+              <h3>Shattered (Unity)</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">Unity</span>
+                <span class="badge">Tower Defense</span>
+                <span class="badge">Balancing</span>
+              </div>
+
+              <ul>
+                <li>Tower defense game built in Unity.</li>
+                <li>Contributed to ideation, core design, and several gameplay mechanics.</li>
+                <li>Focused heavily on balancing so difficulty ramps fairly and stays fun.</li>
+              </ul>
+
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="https://github.com/CooperRIT/Shattered"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Placeholder -->
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/placeholder.svg" alt="Placeholder image" />
+            </div>
+
+            <div class="project-meta">
+              <h3>More projects coming soon</h3>
+              <div class="badges" aria-label="Status">
+                <span class="badge">Work in progress</span>
+              </div>
+
+              <p>
+                More projects are being documented with write-ups, screenshots, and playable builds.
+                If you want to see something specific, feel free to email me.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Lightbox modal -->
+    <div id="myModal" class="modal" aria-hidden="true" role="dialog" aria-label="Image preview">
+      <span class="close" aria-label="Close">&times;</span>
+      <img class="modal-content" id="img01" alt="">
+      <div id="caption"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-card">
+        <h3>Contact</h3>
+        <div class="links" aria-label="Contact links">
+          <a href="mailto:chinmaygaikwad2004@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="https://www.linkedin.com/in/chinmay-gaikwad-26748424a/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/BokeChinmay"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="src/image.js"></script>
+</body>
+</html>
