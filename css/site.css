@@ -179,6 +179,7 @@ img{ max-width: 100%; height: auto; }
   margin-bottom: 6px;
 }
 .card p{ margin-bottom: 10px; }
+.card-meta{ font-size: 0.82rem; color: #666; margin-bottom: 8px; margin-top: -4px; }
 .card ul{ margin-top: 6px; }
 
 .project-list{
