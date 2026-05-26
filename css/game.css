@@ -90,9 +90,9 @@ main { animation: pageReveal 0.45s cubic-bezier(0.23, 1, 0.32, 1) both; }
 
 /* ── Cursor dot (custom cursor) ─────────────────────────────── */
 /*
-  Positioning uses CSS custom properties --cx/--cy set by JS every rAF.
-  No transform in transition — JS owns transform at 60fps.
-  cursor:none needs !important to override Bootstrap's cursor:pointer.
+  JS sets style.transform directly every rAF — no CSS vars, no transitions on
+  transform. CSS vars in transform() trigger full style-recalc every frame.
+  cursor:none !important beats Bootstrap's cursor:pointer at any specificity.
 */
 @media (pointer: fine) {
   body,
@@ -100,52 +100,41 @@ main { animation: pageReveal 0.45s cubic-bezier(0.23, 1, 0.32, 1) both; }
 
   .game-cursor {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 10px;
+    top: 0; left: 0;
+    width: 10px; height: 10px;
     background: rgba(201, 164, 62, 0.9);
     border-radius: 50%;
     pointer-events: none !important;
     z-index: 99999;
     opacity: 0;
-    /* Transform set entirely by JS — no CSS transition on transform */
-    transform: translate(var(--cx, -100px), var(--cy, -100px)) translate(-50%, -50%);
+    /* width/height/background/box-shadow can CSS-transition safely.
+       transform must NOT be in this list — JS owns it. */
     transition: width 0.15s ease, height 0.15s ease,
-                background 0.15s ease, opacity 0.2s ease,
-                box-shadow 0.15s ease;
-    box-shadow: 0 0 8px rgba(201,164,62,0.7);
-    will-change: transform;
+                background 0.15s ease, opacity 0.2s ease;
+    will-change: transform, opacity;
   }
   .game-cursor.visible { opacity: 1; }
   .game-cursor.hover {
-    width: 20px;
-    height: 20px;
+    width: 20px; height: 20px;
     background: rgba(201,164,62,0.35);
-    box-shadow: 0 0 18px rgba(201,164,62,0.5);
   }
 
   .game-cursor-ring {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 34px;
-    height: 34px;
+    top: 0; left: 0;
+    width: 34px; height: 34px;
     border: 1px solid rgba(201,164,62,0.35);
     border-radius: 50%;
     pointer-events: none !important;
     z-index: 99998;
     opacity: 0;
-    /* Ring position also via JS — no transform transition */
-    transform: translate(var(--cx, -100px), var(--cy, -100px)) translate(-50%, -50%);
     transition: width 0.2s ease, height 0.2s ease,
                 border-color 0.2s ease, opacity 0.2s ease;
-    will-change: transform;
+    will-change: transform, opacity;
   }
   .game-cursor-ring.visible { opacity: 1; }
   .game-cursor-ring.hover {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     border-color: rgba(201,164,62,0.65);
   }
 }
@@ -211,11 +200,13 @@ main { animation: pageReveal 0.45s cubic-bezier(0.23, 1, 0.32, 1) both; }
   position: fixed;
   inset: 0;
   z-index: 9100;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(3px);
+  /* No backdrop-filter — it forces the browser to composite the entire page
+     behind the overlay on every frame the panel is open. Plain alpha is free. */
+  background: rgba(0,0,0,0.55);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s ease;
+  will-change: opacity;
 }
 #ach-overlay.show {
   opacity: 1;
@@ -238,7 +229,11 @@ main { animation: pageReveal 0.45s cubic-bezier(0.23, 1, 0.32, 1) both; }
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  /* Promotes panel to its own compositor layer so the slide doesn't
+     trigger paint on the rest of the page */
+  will-change: transform;
+  contain: layout style;
   overflow: hidden;
 }
 #ach-panel.show {
@@ -401,3 +396,43 @@ main { animation: pageReveal 0.45s cubic-bezier(0.23, 1, 0.32, 1) both; }
 .ach-card-status { flex-shrink: 0; }
 .ach-check { font-size: 16px; font-weight: 700; }
 .ach-lock { font-size: 14px; opacity: 0.4; }
+
+/* ═══════════════════════════════════════════════════════════════
+   RARITY CLASSES — replaces all inline style="color:..." on panel
+   elements. Classes are cached by the browser; inline styles force
+   a style-recalc for every single element they appear on.
+═══════════════════════════════════════════════════════════════ */
+.r-common    { color: #9aa3b8 !important; background-color: #9aa3b8; }
+.r-uncommon  { color: #4ade80 !important; background-color: #4ade80; }
+.r-rare      { color: #60a5fa !important; background-color: #60a5fa; }
+.r-epic      { color: #c084fc !important; background-color: #c084fc; }
+.r-legendary { color: #c9a43e !important; background-color: #c9a43e; }
+
+/* Dot only needs background-color, not text color */
+.ach-group-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.ach-group-dot.r-common    { background-color: #9aa3b8; }
+.ach-group-dot.r-uncommon  { background-color: #4ade80; }
+.ach-group-dot.r-rare      { background-color: #60a5fa; }
+.ach-group-dot.r-epic      { background-color: #c084fc; }
+.ach-group-dot.r-legendary { background-color: #c9a43e; }
+
+/* Card unlocked border per rarity */
+.ach-card.ach-unlocked.r-common    { border-color: rgba(154,163,184,0.25); }
+.ach-card.ach-unlocked.r-uncommon  { border-color: rgba(74,222,128,0.25);  }
+.ach-card.ach-unlocked.r-rare      { border-color: rgba(96,165,250,0.25);  }
+.ach-card.ach-unlocked.r-epic      { border-color: rgba(192,132,252,0.25); }
+.ach-card.ach-unlocked.r-legendary { border-color: rgba(201,164,62,0.25);  }
+
+/* Card title color when unlocked */
+.ach-card.ach-unlocked.r-common    .ach-card-title { color: #9aa3b8; }
+.ach-card.ach-unlocked.r-uncommon  .ach-card-title { color: #4ade80; }
+.ach-card.ach-unlocked.r-rare      .ach-card-title { color: #60a5fa; }
+.ach-card.ach-unlocked.r-epic      .ach-card-title { color: #c084fc; }
+.ach-card.ach-unlocked.r-legendary .ach-card-title { color: #c9a43e; }
+
+/* Check mark color when unlocked */
+.ach-card.ach-unlocked.r-common    .ach-check { color: #9aa3b8; }
+.ach-card.ach-unlocked.r-uncommon  .ach-check { color: #4ade80; }
+.ach-card.ach-unlocked.r-rare      .ach-check { color: #60a5fa; }
+.ach-card.ach-unlocked.r-epic      .ach-check { color: #c084fc; }
+.ach-card.ach-unlocked.r-legendary .ach-check { color: #c9a43e; }

@@ -83,7 +83,7 @@
         && !isUnlocked('trophy_hunter')) {
       setTimeout(() => unlock('trophy_hunter'), 1800);
     }
-    if (panelOpen) renderPanelContent();
+    if (panelOpen) patchPanel();
   }
 
   // ═══════════════════════════════════════════════════════════════
@@ -177,39 +177,41 @@
   //  PANEL
   // ═══════════════════════════════════════════════════════════════
 
-  function renderPanelContent() {
-    const count = state.unlocked.length;
-    const total = ALL_ACHIEVEMENTS.length;
-    const pct   = Math.round((count / total) * 100);
+  // ═══════════════════════════════════════════════════════════════
+  //  PANEL — build DOM once, patch text/classes on subsequent opens
+  // ═══════════════════════════════════════════════════════════════
+
+  let panelBuilt = false;
+
+  // Rarity-keyed CSS classes keep inline styles out of the DOM
+  // (inline styles force per-element style recalc; classes are cached)
+  const RARITY_CLASS = {
+    common: 'r-common', uncommon: 'r-uncommon', rare: 'r-rare',
+    epic: 'r-epic', legendary: 'r-legendary',
+  };
+
+  function buildPanel() {
     const order = ['common','uncommon','rare','epic','legendary'];
 
     const sectionsHTML = order.map(r => {
       const achs = ALL_ACHIEVEMENTS.filter(a => a.rarity === r);
       const rc   = RARITY[r];
-      const cards = achs.map(a => {
-        const unlocked  = isUnlocked(a.id);
-        const isSecret  = a.secret && !unlocked;
-        return `
-          <div class="ach-card ${unlocked ? 'ach-unlocked' : 'ach-locked'}"
-               style="${unlocked ? `border-color:${rc.color}40;` : ''}">
-            <div class="ach-card-icon" style="${unlocked ? '' : 'filter:grayscale(1) opacity(0.3);'}">${a.icon}</div>
-            <div class="ach-card-body">
-              <div class="ach-card-title" style="${unlocked ? `color:${rc.color};` : ''}">${isSecret ? '???' : a.title}</div>
-              <div class="ach-card-desc">${unlocked ? a.desc : `<em>${a.hint}</em>`}</div>
-            </div>
-            <div class="ach-card-status">
-              ${unlocked ? `<span class="ach-check" style="color:${rc.color}">✓</span>` : `<span class="ach-lock">🔒</span>`}
-            </div>
-          </div>`;
-      }).join('');
+      const cards = achs.map(a => `
+        <div class="ach-card ${RARITY_CLASS[r]}" data-id="${a.id}">
+          <div class="ach-card-icon">${a.icon}</div>
+          <div class="ach-card-body">
+            <div class="ach-card-title">${a.secret ? '???' : a.title}</div>
+            <div class="ach-card-desc">${a.hint}</div>
+          </div>
+          <div class="ach-card-status"><span class="ach-lock">🔒</span></div>
+        </div>`).join('');
 
-      const rCount = achs.filter(a => isUnlocked(a.id)).length;
       return `
         <div class="ach-group">
           <div class="ach-group-header">
-            <span class="ach-group-dot" style="background:${rc.color}"></span>
-            <span class="ach-group-label" style="color:${rc.color}">${rc.label.toUpperCase()}</span>
-            <span class="ach-group-count">${rCount}/${achs.length}</span>
+            <span class="ach-group-dot ${RARITY_CLASS[r]}"></span>
+            <span class="ach-group-label ${RARITY_CLASS[r]}">${rc.label.toUpperCase()}</span>
+            <span class="ach-group-count" data-rarity="${r}">0/${achs.length}</span>
           </div>
           ${cards}
         </div>`;
@@ -219,24 +221,71 @@
       <div class="ach-panel-header">
         <div>
           <div class="ach-panel-title">🏆 Achievements</div>
-          <div class="ach-panel-sub">${count} of ${total} unlocked</div>
+          <div class="ach-panel-sub" id="ach-panel-sub">0 of ${ALL_ACHIEVEMENTS.length} unlocked</div>
         </div>
         <button class="ach-close-btn" id="ach-close-btn" aria-label="Close">✕</button>
       </div>
       <div class="ach-progress-wrap">
         <div class="ach-progress-track">
-          <div class="ach-progress-fill" style="width:${pct}%"></div>
+          <div class="ach-progress-fill" id="ach-progress-fill"></div>
         </div>
-        <span class="ach-progress-pct">${pct}%</span>
+        <span class="ach-progress-pct" id="ach-progress-pct">0%</span>
       </div>
       <div class="ach-panel-body">${sectionsHTML}</div>`;
 
     document.getElementById('ach-close-btn').addEventListener('click', closePanel);
+    panelBuilt = true;
   }
 
-  function openPanel()  {
+  function patchPanel() {
+    // Only touch the nodes that may have changed — no full rebuild
+    const count = state.unlocked.length;
+    const total = ALL_ACHIEVEMENTS.length;
+    const pct   = Math.round((count / total) * 100);
+
+    const subEl  = document.getElementById('ach-panel-sub');
+    const fillEl = document.getElementById('ach-progress-fill');
+    const pctEl  = document.getElementById('ach-progress-pct');
+    if (subEl)  subEl.textContent  = `${count} of ${total} unlocked`;
+    if (fillEl) fillEl.style.width = pct + '%';
+    if (pctEl)  pctEl.textContent  = pct + '%';
+
+    // Patch per-rarity counts
+    const order = ['common','uncommon','rare','epic','legendary'];
+    order.forEach(r => {
+      const achs    = ALL_ACHIEVEMENTS.filter(a => a.rarity === r);
+      const rCount  = achs.filter(a => isUnlocked(a.id)).length;
+      const countEl = panel.querySelector(`.ach-group-count[data-rarity="${r}"]`);
+      if (countEl) countEl.textContent = `${rCount}/${achs.length}`;
+    });
+
+    // Patch each achievement card
+    ALL_ACHIEVEMENTS.forEach(a => {
+      const card = panel.querySelector(`.ach-card[data-id="${a.id}"]`);
+      if (!card) return;
+      const unlocked = isUnlocked(a.id);
+      const wasUnlocked = card.classList.contains('ach-unlocked');
+      if (unlocked === wasUnlocked) return; // nothing changed — skip
+
+      card.classList.toggle('ach-unlocked', unlocked);
+      card.classList.toggle('ach-locked',   !unlocked);
+      card.querySelector('.ach-card-icon').style.filter = unlocked ? '' : 'grayscale(1) opacity(0.3)';
+      card.querySelector('.ach-card-title').textContent = unlocked
+        ? a.title
+        : (a.secret ? '???' : a.title);
+      card.querySelector('.ach-card-desc').innerHTML = unlocked
+        ? a.desc
+        : `<em>${a.hint}</em>`;
+      card.querySelector('.ach-card-status').innerHTML = unlocked
+        ? `<span class="ach-check">✓</span>`
+        : `<span class="ach-lock">🔒</span>`;
+    });
+  }
+
+  function openPanel() {
     panelOpen = true;
-    renderPanelContent();
+    if (!panelBuilt) buildPanel();
+    patchPanel();
     overlay.classList.add('show');
     panel.classList.add('show');
     trophyBtn.classList.add('active');
@@ -328,43 +377,38 @@
     ring.className = 'game-cursor-ring';
     document.body.append(dot, ring);
 
-    // Start off-screen so they don't flash at (0,0) on load
-    let mx = -200, my = -200;
+    let mx = -200, my = -200;   // start off-screen — no (0,0) flash
     let rx = -200, ry = -200;
-    let clicking = false;
+    let running = true;
+    let scale = 1;
 
-    // Show cursor on first real mouse movement
     document.addEventListener('mousemove', e => {
       mx = e.clientX;
       my = e.clientY;
       dot.classList.add('visible');
       ring.classList.add('visible');
-    }, { passive: true, once: true });
-
-    // Keep updating position after first move
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
     }, { passive: true });
 
-    // Loop always runs — sets CSS vars, JS owns all positioning
-    (function loop() {
+    // Pause the loop when tab is hidden — saves CPU entirely
+    document.addEventListener('visibilitychange', () => {
+      running = !document.hidden;
+      if (running) loop();
+    });
+
+    function loop() {
+      if (!running) return;
+
+      // Lerp ring toward dot position
       rx += (mx - rx) * 0.14;
       ry += (my - ry) * 0.14;
 
-      const scale = clicking ? ' scale(0.6)' : '';
-      // Use CSS custom props — no inline style.transform fights with CSS
-      dot.style.setProperty('--cx', mx + 'px');
-      dot.style.setProperty('--cy', my + 'px');
-      // Inline scale override only for click — sits ON TOP of the CSS var transform
-      dot.style.transform = clicking
-        ? `translate(var(--cx), var(--cy)) translate(-50%, -50%) scale(0.6)`
-        : '';
-      ring.style.setProperty('--cx', rx + 'px');
-      ring.style.setProperty('--cy', ry + 'px');
+      // Direct style.transform — bypasses style recalc, hits compositor only
+      dot.style.transform  = `translate(${mx}px,${my}px) translate(-50%,-50%) scale(${scale})`;
+      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
 
       requestAnimationFrame(loop);
-    })();
+    }
+    loop(); // start immediately
 
     // Hover states
     const hov = 'a,button,.btn-link,.pill,.project,.card,.scroll-container img,.navbar-brand,.dropdown-item,#trophy-btn';
@@ -374,8 +418,8 @@
     document.addEventListener('mouseout', e => {
       if (e.target.closest(hov)) { dot.classList.remove('hover'); ring.classList.remove('hover'); }
     });
-    document.addEventListener('mousedown', () => { clicking = true;  });
-    document.addEventListener('mouseup',   () => { clicking = false; });
+    document.addEventListener('mousedown', () => { scale = 0.6; });
+    document.addEventListener('mouseup',   () => { scale = 1;   });
   }
 
   // ═══════════════════════════════════════════════════════════════

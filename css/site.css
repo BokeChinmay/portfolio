@@ -34,9 +34,18 @@ body {
   font-size: 17px;
   line-height: 1.65;
   min-height: 100vh;
+}
+/* Dot grid on a fixed compositor layer — never repaints on scroll */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background-image:
     radial-gradient(circle, rgba(120, 100, 255, 0.06) 1px, transparent 1px);
   background-size: 32px 32px;
+  will-change: auto;
 }
 
 /* ── Typography ────────────────────────────────────────────── */
@@ -413,12 +422,13 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow);
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  /* Only border-color and transform — no box-shadow in transition (causes paint) */
+  transition: border-color 0.3s ease, transform 0.3s ease;
   will-change: transform;
+  contain: layout style;
 }
 .card:hover {
   border-color: var(--border-hover);
-  box-shadow: var(--shadow), var(--glow);
 }
 .card h3 { font-size: 20px; margin-bottom: 8px; }
 .card p { margin-bottom: 10px; }
@@ -437,12 +447,13 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  /* Only border-color and transform — no box-shadow in transition (causes paint) */
+  transition: border-color 0.3s ease, transform 0.3s ease;
   will-change: transform;
+  contain: layout style;
 }
 .project:hover {
   border-color: var(--border-hover);
-  box-shadow: var(--shadow), var(--glow);
 }
 .project-head {
   display: grid;

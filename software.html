@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Software Development - Chinmay Gaikwad</title>
+  <title>Software Development Projects - Chinmay Gaikwad</title>
   <meta name="description" content="Software development work: systems, tooling, backend integrations, and practical shipped features." />
 
   <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
@@ -45,9 +45,9 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="development.html">Game Development</a>
-              <a class="dropdown-item" href="production.html">Game Design / Production</a>
+              <a class="dropdown-item" href="production.html">Game Design/Production</a>
               <a class="dropdown-item" href="narrative.html">Narrative Writing</a>
-              <a class="dropdown-item" href="software.html">Software <span class="sr-only">(current)</span></a>
+              <a class="dropdown-item" href="software.html">Software Development <span class="sr-only">(current)</span></a>
               <a class="dropdown-item" href="web.html">Web Development</a>
             </div>
           </li>
@@ -137,10 +137,10 @@
         <article class="project">
           <div class="project-head">
             <div class="project-thumb">
-              <img src="media/placeholder.svg" alt="Evenly - Smart Expense Splitter thumbnail" />
+              <img src="media/expensesplitter.png" alt="Evenly - Smart Expense Splitter thumbnail" />
             </div>
             <div class="project-meta">
-              <h3>Evenly — Smart Expense Splitter</h3>
+              <h3>Evenly - Smart Expense Splitter</h3>
               <div class="badges" aria-label="Tech stack">
                 <span class="badge">C#</span>
                 <span class="badge">ASP.NET Core</span>
@@ -157,6 +157,34 @@
               <div class="actions" aria-label="Project links">
                 <a class="btn-link primary" href="https://bokechinmay.github.io/ExpenseSplitter/"><i class="fa-solid fa-link"></i> Live Demo</a>
                 <a class="btn-link" href="https://github.com/BokeChinmay/ExpenseSplitter"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <div class="project-thumb">
+              <img src="media/leveleditor.png" alt="Level Editor thumbnail" />
+            </div>
+            <div class="project-meta">
+              <h3>C# Level Editor</h3>
+              <div class="badges" aria-label="Tech stack">
+                <span class="badge">C#</span>
+                <span class="badge">WPF</span>
+                <span class="badge">.NET 9</span>
+                <span class="badge">MVVM</span>
+                <span class="badge">Command Pattern</span>
+                <span class="badge">JSON Export</span>
+              </div>
+              <ul>
+                <li>Standalone 2D tile-based level editor with a 3-layer system (Ground / Collision / Decoration), tile painting, flood fill, and entity placement with configurable properties.</li>
+                <li>Full undo/redo via the Command pattern. Every action including flood fills wraps into a single undoable <code>BatchCommand</code>.</li>
+                <li>Exports levels to Unity-ready JSON; native <code>.level</code> format persists across sessions with unsaved-changes protection and a recent files list.</li>
+              </ul>
+              <div class="actions" aria-label="Project links">
+                <a class="btn-link primary" href="https://youtu.be/qby0bty2J88" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> Video Demo</a>
+                <a class="btn-link" href="https://github.com/BokeChinmay/LevelEditor" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
               </div>
             </div>
           </div>
